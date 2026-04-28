@@ -10,32 +10,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.restauranteapp.Restaurante
 
 class RestauranteAdapter(private val lista: List<Restaurante>) :
-    RecyclerView.Adapter<RestauranteAdapter.RestauranteViewHolder>() {
+    RecyclerView.Adapter<RestauranteAdapter.ResViewHolder>() {
 
-    class RestauranteViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val img: ImageView = v.findViewById(R.id.img_restaurante)
-        val nome: TextView = v.findViewById(R.id.txt_nome)
-        val detalhes: TextView = v.findViewById(R.id.txt_detalhes)
-        val layout: View = v.findViewById(R.id.layout_item)
+    class ResViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        val imgRestaurante = v.findViewById<ImageView>(R.id.img_res)
+        val txtNome = v.findViewById<TextView>(R.id.txt_nome_res)
+        val txtInfo = v.findViewById<TextView>(R.id.txt_infos_res)
+        val layoutItem = v.findViewById<View>(R.id.layout_item_restaurante)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestauranteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.row_restaurante, parent, false)
-        return RestauranteViewHolder(v)
+        return ResViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: RestauranteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ResViewHolder, position: Int) {
         val res = lista[position]
+        holder.txtNome.text = res.nome
+        holder.txtInfo.text = "${res.cozinha} | ${res.preco} | ⭐ ${res.avaliacao}"
+        holder.imgRestaurante.setImageResource(res.imagem)
 
-        holder.nome.text = res.nome
-        holder.detalhes.text = "${res.cozinha} • ${res.preco} • ⭐ ${res.avaliacao}"
-        holder.img.setImageResource(res.imagem)
-
-        // Se tiver desconto, muda a cor de fundo (ex: cinza claro)
         if (res.temDesconto) {
-            holder.layout.setBackgroundColor(Color.LTGRAY)
+            holder.layoutItem.setBackgroundColor(Color.LTGRAY)
         } else {
-            holder.layout.setBackgroundColor(Color.WHITE)
+            holder.layoutItem.setBackgroundColor(Color.WHITE)
         }
     }
 

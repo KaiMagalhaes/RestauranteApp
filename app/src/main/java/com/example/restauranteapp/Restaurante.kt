@@ -1,6 +1,6 @@
 package com.example.restauranteapp
 
-class Restaurante (
+data class Restaurante(
     val id: Int,
     val nome: String,
     val avaliacao: Double,
@@ -9,4 +9,3 @@ class Restaurante (
     val imagem: Int,
     val temDesconto: Boolean
 )
-
