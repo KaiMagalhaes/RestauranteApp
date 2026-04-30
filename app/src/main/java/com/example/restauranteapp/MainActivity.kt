@@ -30,21 +30,21 @@ class MainActivity : AppCompatActivity() {
 
         listaCompleta = listOf(
             Restaurante(1, "Tasca do Zé", 4.9, "Portuguesa", "5.50€",
-                R.drawable.ic_launcher_background, true, "Oferta 1 Caneca Receita"),
+                R.drawable.restauranteportugues2, true, "Oferta 1 Caneca Receita"),
             Restaurante(2, "Pizza World", 4.2, "Italiana", "12.00€",
-                R.drawable.ic_launcher_background, false),
+                R.drawable.restauranteitaliano, false),
             Restaurante(3, "Sushi Bar", 4.8, "Japonesa", "25.00€",
-                R.drawable.ic_launcher_background, false),
+                R.drawable.restaurantejapones, false),
             Restaurante(4, "Burger House", 3.9, "Americana", "9.00€",
-                R.drawable.ic_launcher_background, true, "10% de Desconto"),
+                R.drawable.restauranteamericano, true, "10% de Desconto"),
             Restaurante(5, "Cantina da Vila", 4.0, "Italiana", "15.00€",
-                R.drawable.ic_launcher_background, false),
+                R.drawable.restauranteitaliano2, false),
             Restaurante(6, "Tapas n' Go", 4.6, "Espanhola", "18.00€",
-                R.drawable.ic_launcher_background, true, "Bebida Grátis"),
+                R.drawable.restauranteespanhol, true, "Bebida Grátis"),
             Restaurante(7, "Puro Verde", 4.7, "Vegetariana", "14.00€",
-                R.drawable.ic_launcher_background, false),
+                R.drawable.restaurantevegetariano, false),
             Restaurante(8, "O Grelhado", 4.3, "Portuguesa", "8.00€",
-                R.drawable.ic_launcher_background, false)
+                R.drawable.restaurantept, false)
         )
 
         val rv = findViewById<RecyclerView>(R.id.recycler_main)
