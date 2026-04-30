@@ -2,22 +2,87 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Título -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="Feedly - Restaurant"
-        android:textSize="40dp" />
+        android:text="🍽Feedly - Restaurant"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
 
+    <!-- Campo de pesquisa -->
+    <EditText
+        android:id="@+id/et_pesquisa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pesquisar restaurante..."
+        android:inputType="text"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Zona de filtros -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/filtros_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_todos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Todos"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_portuguesa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Portuguesa"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_italiana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Italiana"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_japonesa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Japonesa"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_desconto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎉 Com desconto"
+                android:layout_marginEnd="8dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Lista de restaurantes -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

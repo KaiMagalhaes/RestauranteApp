@@ -1,4 +1,4 @@
-package com.example.exerciciooo1
+package com.example.restauranteapp
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -7,35 +7,47 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.restauranteapp.Restaurante
 
-class RestauranteAdapter(private val lista: List<Restaurante>) :
-    RecyclerView.Adapter<RestauranteAdapter.ResViewHolder>() {
+class RestauranteAdapter(private var lista: List<Restaurante>) :
+    RecyclerView.Adapter<RestauranteAdapter.ViewHolder>() {
 
-    class ResViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val imgRestaurante = v.findViewById<ImageView>(R.id.img_res)
-        val txtNome = v.findViewById<TextView>(R.id.txt_nome_res)
-        val txtInfo = v.findViewById<TextView>(R.id.txt_infos_res)
-        val layoutItem = v.findViewById<View>(R.id.layout_item_restaurante)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imagem: ImageView = view.findViewById(R.id.img_restaurante)
+        val nome: TextView = view.findViewById(R.id.tv_nome)
+        val avaliacao: TextView = view.findViewById(R.id.tv_avaliacao)
+        val tipo: TextView = view.findViewById(R.id.tv_tipo)
+        val preco: TextView = view.findViewById(R.id.tv_preco)
+        val desconto: TextView = view.findViewById(R.id.tv_desconto)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.row_restaurante, parent, false)
-        return ResViewHolder(v)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.row_restaurante, parent, false)  // ← row_restaurante!
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ResViewHolder, position: Int) {
-        val res = lista[position]
-        holder.txtNome.text = res.nome
-        holder.txtInfo.text = "${res.cozinha} | ${res.preco} | ⭐ ${res.avaliacao}"
-        holder.imgRestaurante.setImageResource(res.imagem)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val r = lista[position]
+        holder.imagem.setImageResource(r.imagem)
+        holder.nome.text = r.nome
+        holder.avaliacao.text = "⭐ Rating: ${r.avaliacao}"
+        holder.tipo.text = "🍽️ Tipo de cozinha: ${r.tipoComida}"
+        holder.preco.text = "💰 Preço médio: ${r.preco}"
 
-        if (res.temDesconto) {
-            holder.layoutItem.setBackgroundColor(Color.LTGRAY)
+        if (r.temDesconto) {
+            holder.desconto.visibility = View.VISIBLE
+            holder.desconto.text = "🎉 ${r.desconto}"
+            holder.itemView.setBackgroundColor(Color.parseColor("#FFF9C4"))
         } else {
-            holder.layoutItem.setBackgroundColor(Color.WHITE)
+            holder.desconto.visibility = View.GONE
+            holder.itemView.setBackgroundColor(Color.WHITE)
         }
     }
 
     override fun getItemCount() = lista.size
+
+    fun atualizarLista(novaLista: List<Restaurante>) {
+        lista = novaLista
+        notifyDataSetChanged()
+    }
 }
