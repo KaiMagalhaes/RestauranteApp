@@ -22,7 +22,7 @@ class RestauranteAdapter(private var lista: List<Restaurante>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_restaurante, parent, false)  // ← row_restaurante!
+            .inflate(R.layout.row_restaurante, parent, false)
         return ViewHolder(view)
     }
 

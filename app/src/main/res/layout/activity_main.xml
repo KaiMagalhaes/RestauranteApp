@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🍽Feedly - Restaurant"
+        android:text="Feedly - Restaurante"
         android:textSize="26sp"
         android:textStyle="bold"
         android:paddingBottom="10dp" />
